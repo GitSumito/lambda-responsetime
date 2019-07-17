@@ -4,14 +4,15 @@ set -euo pipefail
 # tmpフォルダ内にawscliを配置するためHOMEとPATHを設定
 export HOME="/tmp"
 export PATH="$HOME/.local/bin:$PATH"
- 
+
 # pipをインストール
 cd /tmp
 curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python get-pip.py --user
+
 # pipを用いてawscliをインストール
-pip install awscli --user
- 
+pip install awscli --user 
+
 # ハンドラ関数の読み込み
 source $LAMBDA_TASK_ROOT/"$(echo $_HANDLER | cut -d. -f1).sh"
 while true
